@@ -49,25 +49,25 @@ defimpl MarkYamill.Decoder, for: MarkYamill.Lists.Processed do
   alias MarkYamill.Lists.Processed
 
   def decode(%Processed{list: list}) do
-    if stringified_map_list?(list) do
+    if map_list?(list) do
       Enum.into(list, %{})
     else
       list
     end
   end
 
-  defp stringified_map_list?(list) do
+  defp map_list?(list) do
     processed =
       list
-      |> Enum.map(fn i -> stringified_key_value_pair?(i) end)
+      |> Enum.map(fn i -> key_value_pair?(i) end)
       |> Enum.uniq
     processed == [true]
   end
 
-  defp stringified_key_value_pair?(term) do
+  defp key_value_pair?(term) do
     case term do
-      {k, _} when is_bitstring(k) -> true
-      _                           -> false
+      {_, _} -> true
+      _      -> false
     end
   end
 end

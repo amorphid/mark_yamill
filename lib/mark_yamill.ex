@@ -8,8 +8,9 @@ defmodule MarkYamill do
   end
 
   defp parse(encoded) do
-    encoded
-    |> :yamerl_the_fork_constr.string()
-    |> List.first()
+    case :yamerl_the_fork_constr.string(encoded) do
+      list when length(list) > 1 -> list
+      list                       -> List.first(list)
+    end
   end
 end
