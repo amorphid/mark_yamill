@@ -46,7 +46,6 @@ defimpl MarkYamill.Decoder, for: MarkYamill.Lists.Printable do
 end
 
 defimpl MarkYamill.Decoder, for: MarkYamill.Lists.Processed do
-  alias MarkYamill.Lists
   alias MarkYamill.Lists.Processed
 
   def decode(%Processed{list: list}) do
@@ -67,7 +66,7 @@ defimpl MarkYamill.Decoder, for: MarkYamill.Lists.Processed do
 
   defp stringified_key_value_pair?(term) do
     case term do
-      {k, v} when is_bitstring(k) -> true
+      {k, _} when is_bitstring(k) -> true
       _                           -> false
     end
   end
