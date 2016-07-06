@@ -17,6 +17,33 @@ defmodule MarkYamillTest do
       assert actual == expected
     end
 
+    test "folded_new_lines_are_preserved_for_more_indented_and_blank_lines" do
+      actual = decode("folded_new_lines_are_preserved_for_more_indented_and_blank_lines")
+      expected = "Sammy Sosa completed another fine season with great stats.\n\n  63 Home Runs\n  0.288 Batting Average\n\nWhat a year!\n"
+      assert actual == expected
+    end
+
+    test "in_literals_newlines_are_preserved" do
+      actual = decode("in_literals_newlines_are_preserved")
+      expected = "\\//||\\/||\n// ||  ||__\n"
+      assert actual == expected
+    end
+
+    test "indentation_determines_scope" do
+      actual = decode("indentation_determines_scope")
+      expected =
+        %{"name"=>"Mark McGwire",
+          "accomplishment"=>"Mark set a major league home run record in 1998.\n",
+          "stats"=>"65 Home Runs\n0.278 Batting Average\n"}
+      assert actual == expected
+    end
+
+    test "in_the_folded_scalars_new_lines_become_spaces" do
+      actual = decode("in_the_folded_scalars_new_lines_become_spaces")
+      expected = "Mark McGwire's year was crippled by a knee injury.\n"
+      assert actual == expected
+    end
+
     test "mapping_between_sequences" do
       actual = decode("mapping_between_sequences")
       expected =
@@ -47,6 +74,14 @@ defmodule MarkYamillTest do
       assert actual == expected
     end
 
+    test "multi_line_flow_scalars" do
+      actual = decode("multi_line_flow_scalars")
+      expected =
+        %{"plain"=>"This unquoted scalar spans many lines.",
+          "quoted"=>"So does this quoted scalar.\n"}
+      assert actual == expected
+    end
+
     test "node_for_sammy_sosa_appears_twice_in_this_document" do
       actual = decode("node_for_sammy_sosa_appears_twice_in_this_document")
       expected =
@@ -60,6 +95,18 @@ defmodule MarkYamillTest do
       expected =
         [%{"time"=> "20:03:20", "player"=> "Sammy Sosa", "action"=> "strike (miss)"},
          %{"time"=> "20:03:47", "player"=> "Sammy Sosa", "action"=> "grand slam"}]
+      assert actual == expected
+    end
+
+    test "quoted_scalars" do
+      actual = decode("quoted_scalars")
+      expected =
+        %{"unicode"=>"Sosa did fine.☺",
+          "control"=>"\b1998\t1999\t2000\n",
+          "hex esc"=>"\r\n is \r\n",
+          "single"=>"\"Howdy!\" he cried.",
+          "quoted"=>" # Not a 'comment'.",
+          "tie-fighter"=>"|\\-*-/|"}
       assert actual == expected
     end
 

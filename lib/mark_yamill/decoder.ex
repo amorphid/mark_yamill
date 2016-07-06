@@ -7,7 +7,7 @@ defimpl MarkYamill.Decoder, for: List do
   alias MarkYamill.Lists
 
   def decode(list) do
-    if :io_lib.printable_list(list) do
+    if :io_lib.printable_unicode_list(list) do
       Decoder.decode(%Lists.Printable{list: list})
     else
       Decoder.decode(%Lists.Compound{list: list})
