@@ -21,6 +21,16 @@ defimpl MarkYamill.Decoder, for: Float do
   end
 end
 
+defimpl MarkYamill.Decoder, for: Atom do
+  def decode(:null) do
+    nil
+  end
+
+  def decode(atom) do
+    atom
+  end
+end
+
 defimpl MarkYamill.Decoder, for: Integer do
   def decode(integer) do
     integer

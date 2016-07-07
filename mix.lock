@@ -1,3 +1,1 @@
-%{"yamerl": {:git, "https://github.com/yakaz/yamerl.git", "ae810a808817d9482b4628ae3e20d746e3729fe0", []},
-  "yamerl_the_fork": {:hex, :yamerl_the_fork, "0.3.3", "fbc1e8869099a3578dc9d3ec3d2b54e0a33dfdb2d4150ef24a0e289e18dd8c2f", [:rebar3], []},
-  "yaml_elixir": {:hex, :yaml_elixir, "1.0.0", "a0b703148aa8926a08fc14619c83e9cdf7555ff7e8bb9e74c08aa716eaf8c609", [:mix], []}}
+%{"yamerl_the_fork": {:hex, :yamerl_the_fork, "0.3.3", "fbc1e8869099a3578dc9d3ec3d2b54e0a33dfdb2d4150ef24a0e289e18dd8c2f", [:rebar3], []}}
