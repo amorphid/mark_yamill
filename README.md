@@ -1,24 +1,37 @@
 # MarkYamill
 
-**TODO: Add description**
+A YAML decoder for Elixir.
 
-## Installation
+## Get Up And Running
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+**Add it (to `mix.exs`)**
 
-  1. Add `mark_yamill` to your list of dependencies in `mix.exs`:
+  ```elixir
+  def deps do
+    [{:mark_yamill, "~> 0.1.0"}]
+  end
+  ```
 
-    ```elixir
-    def deps do
-      [{:mark_yamill, "~> 0.1.0"}]
-    end
-    ```
+**Start it (in `mix.exs`)**
 
-  2. Ensure `mark_yamill` is started before your application:
+  ```elixir
+  def application do
+    [applications: [:mark_yamill]]
+  end
+  ```
 
-    ```elixir
-    def application do
-      [applications: [:mark_yamill]]
-    end
-    ```
+**Download it**
 
+  ```bash
+  $ mix deps.get
+  ```
+
+**Run it!**
+
+  ```bash
+  $ iex -S mix
+  iex(1)> yaml = "---\nfoo: bar\nhello: world\n"
+  "---\nfoo: bar\nhello: world\n"
+  iex(2)> MarkYamill.decode(yaml)
+  %{"foo" => "bar", "hello" => "world"}
+  ```
