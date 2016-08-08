@@ -3,8 +3,7 @@ defmodule MarkYamillTest do
 
   def decode(file) do
     path = File.cwd! <> "/test/data/" <> file <> ".yml"
-    yaml = File.read!(path)
-    MarkYamill.decode(yaml)
+    MarkYamill.decode_file(path)
   end
 
   describe "Given 'yamerl' fails to decode \"---\", then" do

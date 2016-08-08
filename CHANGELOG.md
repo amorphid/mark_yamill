@@ -1,5 +1,9 @@
 ## 0.2.0
 
+Features:
+
+- Add ability to decode from file
+
 Bug fixes:
 
 - No longer hangs when decoding the string "---" (workaround for bug in yamerl)

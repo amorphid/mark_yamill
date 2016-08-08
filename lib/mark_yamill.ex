@@ -7,6 +7,10 @@ defmodule MarkYamill do
     |> Decoder.decode()
   end
 
+  def decode_file(path) do
+    File.read!(path) |> decode
+  end
+
   defp parse("---") do
     nil
   end
