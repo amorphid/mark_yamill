@@ -7,6 +7,10 @@ defmodule MarkYamill do
     |> Decoder.decode()
   end
 
+  defp parse("---") do
+    nil
+  end
+
   defp parse(encoded) do
     case :yamerl_constr.string(encoded) do
       list when length(list) > 1 -> list

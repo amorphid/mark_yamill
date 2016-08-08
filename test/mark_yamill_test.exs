@@ -7,6 +7,19 @@ defmodule MarkYamillTest do
     MarkYamill.decode(yaml)
   end
 
+  describe "Given 'yamerl' fails to decode \"---\", then" do
+    test "it should timeout" do
+      task = Task.async(fn -> :yamerl_constr.string("---") end)
+      assert catch_exit(Task.await(task, 100))
+    end
+
+    test "MarkYamill should handle this special case" do
+      actual   = MarkYamill.decode("---")
+      expected = nil
+      assert actual == expected
+    end
+  end
+
   describe "From http://www.yaml.org/spec/1.2/spec.html, parsing Example" do
     test "2.1.  Sequence of Scalars (ball players)" do
       actual = decode("2.1")
