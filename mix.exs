@@ -2,11 +2,11 @@ defmodule MarkYamill.Mixfile do
   use Mix.Project
 
   def application do
-    [applications: [:logger, :yamerl_the_fork]]
+    [applications: [:logger, :yamerl]]
   end
 
   defp deps do
-    [{:yamerl_the_fork, "~> 0.3.3"}]
+    [{:yamerl, "~> 0.3.2"}]
   end
 
   def project do

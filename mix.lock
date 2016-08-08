@@ -1,1 +1,2 @@
-%{"yamerl_the_fork": {:hex, :yamerl_the_fork, "0.3.3", "fbc1e8869099a3578dc9d3ec3d2b54e0a33dfdb2d4150ef24a0e289e18dd8c2f", [:rebar3], []}}
+%{"yamerl": {:hex, :yamerl, "0.3.2", "9eac1537d251e926f47763ab1db0d9e6e8f2397646c290d58aa6ceebc6832fb7", [:rebar3], []},
+  "yamerl_the_fork": {:hex, :yamerl_the_fork, "0.3.3", "fbc1e8869099a3578dc9d3ec3d2b54e0a33dfdb2d4150ef24a0e289e18dd8c2f", [:rebar3], []}}
