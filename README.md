@@ -8,7 +8,7 @@ A YAML decoder for Elixir.
 
   ```elixir
   def deps do
-    [{:mark_yamill, "~> 0.1.0"}]
+    [{:mark_yamill, "~> 0.2.1"}]
   end
   ```
 
