@@ -2,25 +2,6 @@ defprotocol MarkYamill.Decoder do
   def decode(data)
 end
 
-defimpl MarkYamill.Decoder, for: List do
-  alias MarkYamill.Decoder
-  alias MarkYamill.Lists
-
-  def decode(list) do
-    if :io_lib.printable_unicode_list(list) do
-      Decoder.decode(%Lists.Printable{list: list})
-    else
-      Decoder.decode(%Lists.Compound{list: list})
-    end
-  end
-end
-
-defimpl MarkYamill.Decoder, for: Float do
-  def decode(float) do
-    float
-  end
-end
-
 defimpl MarkYamill.Decoder, for: Atom do
   def decode(:null) do
     nil
@@ -31,9 +12,32 @@ defimpl MarkYamill.Decoder, for: Atom do
   end
 end
 
+defimpl MarkYamill.Decoder, for: Float do
+  def decode(float) do
+    float
+  end
+end
+
 defimpl MarkYamill.Decoder, for: Integer do
   def decode(integer) do
     integer
+  end
+end
+
+defimpl MarkYamill.Decoder, for: List do
+  alias MarkYamill.Decoder
+  alias MarkYamill.Lists
+
+  def decode([]) do
+    []
+  end
+
+  def decode(list) do
+    if :io_lib.printable_unicode_list(list) do
+      Decoder.decode(%Lists.Printable{list: list})
+    else
+      Decoder.decode(%Lists.Compound{list: list})
+    end
   end
 end
 

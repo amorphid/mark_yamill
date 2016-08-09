@@ -1,3 +1,9 @@
+## 0.2.1
+
+Bug fixes:
+
+- Empty list now returned as empty list, not empty string
+
 ## 0.2.0
 
 Features:

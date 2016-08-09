@@ -17,7 +17,7 @@ defmodule MarkYamill.Mixfile do
      description: "A YAML decoder for Elixir",
      elixir: "~> 1.3",
      package: package(),
-     version: "0.2.0",
+     version: "0.2.1",
      start_permanent: Mix.env == :prod]
   end
 
